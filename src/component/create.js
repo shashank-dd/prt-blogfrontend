@@ -1,5 +1,5 @@
 import React, {  useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import './create.css';
 
@@ -15,7 +15,14 @@ useEffect(()=>{
     ...post
  })
 },[])
+let logoutHandler = () =>{
+  console.log(1)
+          window.localStorage.removeItem('token')
+
+          navigate("/")
+       }
 async function hh() {
+
     const config = {
         headers: {
             "content-type": "multipart/form-data"
@@ -30,7 +37,14 @@ async function hh() {
 }
 
   return (
-    <div className="ba">
+    <div>
+      <div id='nav'>
+        <span>Blog LoGo</span>
+        
+       <Link to="/homepage"><span id='home'>home</span></Link> 
+        <Link to="/create" > <span id='create'>create</span> </Link>
+        <span id='log' onClick={logoutHandler}>Logout</span>
+        <div className="ba">
       <div><input type="text" onChange={(e)=>{ setpost({...post,title:e.target.value}) }}></input></div>
       <div><input type="file"onChange={(e)=>{ setpost({...post,image:e.target.files[0]}) }} ></input></div>
       <div><input type="text" onChange={(e)=>{ setpost({...post,description:e.target.value}) }}></input></div>
@@ -38,6 +52,10 @@ async function hh() {
      
       
     </div>
+
+      </div>
+    </div>
+    
   )
 }
 
