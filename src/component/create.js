@@ -21,7 +21,7 @@ async function hh() {
             "content-type": "multipart/form-data"
         }
     }
-    const data = await axios.post("http://localhost:8080/blog/post", post, config)
+    const data = await axios.post("https://prtback.onrender.com/blog/post", post, config)
     console.log(data)
     if (data.data.ok === "ok") {
         navigate("/homepage")

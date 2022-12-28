@@ -11,7 +11,7 @@ function HomePage() {
 
   let navigate = useNavigate()
   useEffect(() => {
-    axios.post("http://localhost:8080/blog/data", { token: window.localStorage.getItem("token") }).then(response => {
+    axios.post("https://prtback.onrender.com/blog/data", { token: window.localStorage.getItem("token") }).then(response => {
       console.log(response.data.dat)
       setdta(response.data.dat)
       console.log("dta", dta)
